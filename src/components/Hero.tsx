@@ -1,11 +1,11 @@
 import React from 'react';
-import { ArrowRight, Code, Palette, Database } from 'lucide-react';
+import { ArrowRight, Smartphone, Cpu, Globe } from 'lucide-react';
 
 const Hero: React.FC = () => {
   const skills = [
-    { icon: Code, label: 'Frontend Development', color: 'text-blue-600' },
-    { icon: Palette, label: 'UI/UX Design', color: 'text-purple-600' },
-    { icon: Database, label: 'Backend Development', color: 'text-green-600' },
+    { icon: Smartphone, label: 'Mobile Development', color: 'text-blue-600' },
+    { icon: Globe, label: 'Web Development', color: 'text-green-600' },
+    { icon: Cpu, label: 'AI & Robotics', color: 'text-purple-600' },
   ];
 
   return (
@@ -19,57 +19,68 @@ const Hero: React.FC = () => {
                 👋 Hello, I'm
               </span>
               <h1 className='text-5xl md:text-7xl font-bold tracking-tight'>
-                <span className='text-gray-900'>Full Stack</span>
+                <span className='text-gray-900'>ALI IJAZ</span>
                 <br />
-                <span className='text-primary-600'>Developer</span>
+                <span className='text-primary-600'>Software Engineer</span>
               </h1>
               <p className='text-xl text-gray-600 max-w-2xl'>
-                I craft beautiful, functional web experiences with React,
-                TypeScript, and modern technologies. Passionate about clean
-                code, intuitive design, and scalable solutions.
+                Quick learner, a self starter and a results-driven software
+                engineer with experience in Mobile and web App development with
+                a strong background in various programming languages. Passionate
+                about AI and Robotics, always eager to learn new skills and
+                technologies.
               </p>
             </div>
 
             <div className='flex flex-wrap gap-4'>
-              <button className='btn btn-primary flex items-center gap-2'>
+              <a
+                href='#projects'
+                className='btn btn-primary flex items-center gap-2'
+              >
                 View My Work
                 <ArrowRight size={20} />
-              </button>
-              <button className='btn btn-secondary'>Contact Me</button>
+              </a>
+              <a href='#contact' className='btn btn-secondary'>
+                Contact Me
+              </a>
             </div>
 
             {/* Quick Stats */}
             <div className='grid grid-cols-3 gap-6 pt-8'>
               <div className='text-center'>
-                <div className='text-3xl font-bold text-primary-700'>50+</div>
+                <div className='text-3xl font-bold text-primary-700'>10+</div>
                 <div className='text-gray-600'>Projects</div>
               </div>
               <div className='text-center'>
-                <div className='text-3xl font-bold text-primary-700'>5+</div>
+                <div className='text-3xl font-bold text-primary-700'>3+</div>
                 <div className='text-gray-600'>Years Experience</div>
               </div>
               <div className='text-center'>
-                <div className='text-3xl font-bold text-primary-700'>100%</div>
-                <div className='text-gray-600'>Client Satisfaction</div>
+                <div className='text-3xl font-bold text-primary-700'>4</div>
+                <div className='text-gray-600'>Internships</div>
               </div>
             </div>
           </div>
 
           {/* Right Content - Profile & Skills */}
           <div className='space-y-8'>
-            {/* Profile Image Placeholder */}
-            <div className='relative'>
-              <div className='w-full h-96 bg-gradient-to-br from-primary-500 to-purple-500 rounded-3xl overflow-hidden shadow-2xl'>
-                <div className='absolute inset-0 flex items-center justify-center'>
-                  <div className='text-white text-center'>
-                    <div className='text-6xl mb-4'>👨‍💻</div>
-                    <p className='text-xl font-semibold'>Your Profile Photo</p>
-                    <p className='text-sm opacity-90'>Add your photo here</p>
-                  </div>
+            {/* Profile Image */}
+            <div className='relative w-[300px] h-[380px] rounded-3xl'>
+              <div className='w-[300px] h-[380px] bg-gradient-to-br from-primary-500 to-purple-500 rounded-3xl overflow-hidden shadow-2xl flex items-center justify-center p-0'>
+                <div className='relative w-full h-full max-w-md'>
+                  <img
+                    src='/images/Profile_Photo.jpeg'
+                    alt='Ali Ijaz - Software Engineer'
+                    className='w-full h-full object-contain rounded-2xl'
+                  />
+                  <div className='absolute inset-0 bg-gradient-to-t from-black/20 to-transparent rounded-2xl'></div>
                 </div>
+                <div className='absolute inset-0 bg-gradient-to-br from-primary-500/30 to-purple-500/30'></div>
               </div>
               {/* Decorative elements */}
               <div className='absolute -top-4 -right-4 w-24 h-24 bg-yellow-400 rounded-full opacity-20'></div>
+              <div className='absolute -bottom-4 -right-4 w-24 h-24 bg-yellow-400 rounded-full opacity-20'></div>
+
               <div className='absolute -bottom-4 -left-4 w-32 h-32 bg-blue-400 rounded-full opacity-20'></div>
             </div>
 

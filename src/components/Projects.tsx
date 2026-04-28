@@ -1,73 +1,238 @@
-import React from 'react';
-import { ExternalLink, Star, GitFork, Eye, GitBranch } from 'lucide-react';
+import React, { useState } from 'react';
+import {
+  ExternalLink,
+  Star,
+  GitFork,
+  Eye,
+  GitBranch,
+  ChevronLeft,
+  ChevronRight,
+} from 'lucide-react';
+
+// Enhanced Image Carousel Component
+interface ImageCarouselProps {
+  images: string[];
+  title: string;
+}
+
+const ImageCarousel: React.FC<ImageCarouselProps> = ({ images, title }) => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isLoading, setIsLoading] = useState(true);
+
+  const goToPrevious = () => {
+    setCurrentIndex((prevIndex) =>
+      prevIndex === 0 ? images.length - 1 : prevIndex - 1,
+    );
+    setIsLoading(true);
+  };
+
+  const goToNext = () => {
+    setCurrentIndex((prevIndex) =>
+      prevIndex === images.length - 1 ? 0 : prevIndex + 1,
+    );
+    setIsLoading(true);
+  };
+
+  const handleImageLoad = () => {
+    setIsLoading(false);
+  };
+
+  const handleImageError = () => {
+    setIsLoading(false);
+    console.error(`Failed to load image: ${images[currentIndex]}`);
+  };
+
+  if (images.length === 0) {
+    return (
+      <div className='w-full h-full flex items-center justify-center bg-gradient-to-br from-gray-900 to-gray-800'>
+        <div className='text-white text-center p-8'>
+          <div className='text-5xl mb-4'>📱</div>
+          <p className='font-semibold text-lg'>Project Preview</p>
+          <p className='text-gray-400 text-sm mt-2'>No images available</p>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className='relative w-full h-full bg-gradient-to-br from-gray-900 to-gray-800'>
+      {/* Loading overlay */}
+      {isLoading && (
+        <div className='absolute inset-0 flex items-center justify-center bg-gray-900/80 z-10'>
+          <div className='animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary-500'></div>
+        </div>
+      )}
+
+      {/* Main image container */}
+      <div className='w-full h-full flex items-center justify-center p-2 md:p-3'>
+        <img
+          src={images[currentIndex]}
+          alt={`${title} screenshot ${currentIndex + 1}`}
+          className='max-w-[85%] max-h-[85%] object-contain transition-transform duration-300'
+          onLoad={handleImageLoad}
+          onError={handleImageError}
+        />
+      </div>
+
+      {images.length > 1 && (
+        <>
+          {/* Navigation buttons */}
+          <button
+            onClick={goToPrevious}
+            className='absolute left-4 top-1/2 transform -translate-y-1/2 bg-black/70 hover:bg-black/90 text-white p-3 rounded-full transition-all duration-300 hover:scale-110 shadow-lg'
+            aria-label='Previous image'
+          >
+            <ChevronLeft size={24} />
+          </button>
+          <button
+            onClick={goToNext}
+            className='absolute right-4 top-1/2 transform -translate-y-1/2 bg-black/70 hover:bg-black/90 text-white p-3 rounded-full transition-all duration-300 hover:scale-110 shadow-lg'
+            aria-label='Next image'
+          >
+            <ChevronRight size={24} />
+          </button>
+
+          {/* Image indicators */}
+          <div className='absolute bottom-6 left-1/2 transform -translate-x-1/2 flex gap-2'>
+            {images.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => {
+                  setCurrentIndex(index);
+                  setIsLoading(true);
+                }}
+                className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                  index === currentIndex
+                    ? 'bg-primary-500 w-8 scale-125'
+                    : 'bg-white/50 hover:bg-white/80 hover:scale-110'
+                }`}
+                aria-label={`Go to image ${index + 1}`}
+              />
+            ))}
+          </div>
+
+          {/* Image counter */}
+          <div className='absolute top-4 right-4 bg-black/80 text-white text-sm px-3 py-1.5 rounded-full backdrop-blur-sm'>
+            <span className='font-medium'>{currentIndex + 1}</span>
+            <span className='text-gray-300'> / {images.length}</span>
+          </div>
+
+          {/* Image title */}
+          <div className='absolute top-4 left-4 bg-black/80 text-white text-sm px-3 py-1.5 rounded-full backdrop-blur-sm'>
+            <span className='font-medium'>{title}</span>
+          </div>
+        </>
+      )}
+
+      {/* Image navigation hint for mobile */}
+      {images.length > 1 && (
+        <div className='absolute bottom-2 left-1/2 transform -translate-x-1/2 text-white/70 text-xs'>
+          ← Swipe or use arrows →
+        </div>
+      )}
+    </div>
+  );
+};
 
 const Projects: React.FC = () => {
   const projects = [
     {
-      title: 'E-Commerce Platform',
+      title: 'Rubi Robot',
       description:
-        'A full-featured online store with cart, checkout, and admin dashboard.',
-      tags: ['React', 'TypeScript', 'Node.js', 'MongoDB', 'Stripe'],
-      githubStars: 42,
-      githubForks: 18,
-      liveUrl: 'https://demo.example.com',
-      githubUrl: 'https://github.com/username/ecommerce',
-      featured: true,
-    },
-    {
-      title: 'Task Management App',
-      description:
-        'Collaborative project management tool with real-time updates and drag‑and‑drop.',
-      tags: ['Next.js', 'Tailwind', 'Socket.io', 'PostgreSQL'],
-      githubStars: 28,
-      githubForks: 9,
-      liveUrl: 'https://tasks.demo.com',
-      githubUrl: 'https://github.com/username/taskapp',
-      featured: true,
-    },
-    {
-      title: 'Weather Dashboard',
-      description:
-        'Beautiful weather application with forecasts, maps, and historical data.',
-      tags: ['React', 'Chart.js', 'OpenWeather API', 'PWA'],
+        'Building an intelligent mobile robot that understands voice commands, detects objects, and navigates autonomously using computer vision, sensors and natural language processing.',
+      tags: ['Python', 'OpenCV', 'YOLOv8', 'Raspberry Pi', 'AI', 'Robotics'],
       githubStars: 15,
       githubForks: 5,
-      liveUrl: 'https://weather.demo.com',
-      githubUrl: 'https://github.com/username/weather',
-      featured: false,
-    },
-    {
-      title: 'Portfolio Website',
-      description:
-        'Modern, responsive portfolio website with dark mode and animations.',
-      tags: ['React', 'Tailwind', 'Framer Motion', 'TypeScript'],
-      githubStars: 36,
-      githubForks: 12,
-      liveUrl: 'https://portfolio.demo.com',
-      githubUrl: 'https://github.com/username/portfolio',
-      featured: false,
-    },
-    {
-      title: 'AI Chat Assistant',
-      description:
-        'Chatbot powered by OpenAI API with custom personality and context memory.',
-      tags: ['Python', 'FastAPI', 'React', 'OpenAI'],
-      githubStars: 51,
-      githubForks: 23,
-      liveUrl: 'https://chat.demo.com',
-      githubUrl: 'https://github.com/username/aichat',
+      liveUrl: '#',
+      githubUrl: 'https://github.com/aliijaz33/rubi-robot',
       featured: true,
+      images: ['/images/projects/robot-ai.jpg'], // placeholder
     },
     {
-      title: 'Fitness Tracker',
+      title: 'AZ-Pay',
       description:
-        'Mobile‑first fitness application with workout plans and progress analytics.',
-      tags: ['React Native', 'Firebase', 'Redux', 'Chart.js'],
-      githubStars: 19,
-      githubForks: 7,
-      liveUrl: 'https://fitness.demo.com',
-      githubUrl: 'https://github.com/username/fitness',
+        'A Binance P2P-inspired mobile app enabling secure peer-to-peer currency exchange and transfers across multiple countries with escrow protection, real-time rates, and multi-currency wallet support.',
+      tags: ['React Native', 'Node.js', 'MongoDB', 'Express.js', 'Fintech'],
+      githubStars: 28,
+      githubForks: 12,
+      liveUrl: '#',
+      githubUrl: 'https://github.com/aliijaz33/az-pay',
+      featured: true,
+      images: [
+        '/images/projects/az-pay/Dashboard.png',
+        '/images/projects/az-pay/Deposit.png',
+        '/images/projects/az-pay/Deposit:Withdraw.png',
+        '/images/projects/az-pay/P2P Add selection.png',
+        '/images/projects/az-pay/P2P Order history.png',
+        '/images/projects/az-pay/P2P Profile.png',
+        '/images/projects/az-pay/P2P create Add.png',
+        '/images/projects/az-pay/P2P currency selection.png',
+        '/images/projects/az-pay/Portfolio.png',
+        '/images/projects/az-pay/Settings.png',
+        '/images/projects/az-pay/Side Bar.png',
+        '/images/projects/az-pay/Transfer.png',
+      ],
+    },
+    {
+      title: 'AZ-Ride Share',
+      description:
+        'A ride-sharing mobile application similar to Uber with real-time tracking, payment integration, and driver-passenger matching.',
+      tags: ['React Native', 'Google Maps', 'Firebase', 'Payment Gateway'],
+      githubStars: 22,
+      githubForks: 8,
+      liveUrl: '#',
+      githubUrl: 'https://github.com/aliijaz33/az-ride',
       featured: false,
+      images: ['/images/projects/ride-share.jpg'], // placeholder
+    },
+    {
+      title: 'Mini Trust Wallet',
+      description:
+        'Web3 Wallet for cryptocurrency with secure transactions, multi-chain support, and NFT display capabilities.',
+      tags: ['React Native', 'Web3', 'Blockchain', 'Crypto', 'Ethereum'],
+      githubStars: 18,
+      githubForks: 6,
+      liveUrl: '#',
+      githubUrl: 'https://github.com/aliijaz33/mini-trust-wallet',
+      featured: false,
+      images: [
+        '/images/projects/trust-wallet/Welcome.png',
+        '/images/projects/trust-wallet/QRCode.png',
+        '/images/projects/trust-wallet/addressCopied.png',
+        '/images/projects/trust-wallet/createWallet 1.png',
+        '/images/projects/trust-wallet/createWallet 2.png',
+        '/images/projects/trust-wallet/importWallet 1.png',
+        '/images/projects/trust-wallet/importWallet 2.png',
+        '/images/projects/trust-wallet/recoveryPhraseHide.png',
+        '/images/projects/trust-wallet/recoveryPhraseShown.png',
+        '/images/projects/trust-wallet/resetWallet.png',
+        '/images/projects/trust-wallet/settings.png',
+        '/images/projects/trust-wallet/walletLoading.png',
+      ],
+    },
+    {
+      title: 'GymIstan',
+      description:
+        'Fitness and gym management application with workout tracking, nutrition plans, and progress analytics.',
+      tags: ['React Native', 'Firebase', 'Redux', 'Fitness'],
+      githubStars: 12,
+      githubForks: 4,
+      liveUrl: '#',
+      githubUrl: 'https://github.com/aliijaz33/gymistan',
+      featured: false,
+      images: ['/images/projects/fitness-app.jpg'], // placeholder
+    },
+    {
+      title: 'Virtual Stylist',
+      description:
+        'AI-powered fashion recommendation system that suggests outfits based on user preferences and current trends.',
+      tags: ['React Native', 'AI', 'Fashion', 'Recommendation System'],
+      githubStars: 10,
+      githubForks: 3,
+      liveUrl: '#',
+      githubUrl: 'https://github.com/aliijaz33/virtual-stylist',
+      featured: false,
+      images: ['/images/projects/fashion-ai.jpg'], // placeholder
     },
   ];
 
@@ -156,15 +321,18 @@ const Projects: React.FC = () => {
                 </a>
               </div>
 
-              {/* Project Image Placeholder */}
-              <div className='mt-6 aspect-video bg-gradient-to-r from-primary-500 to-purple-500 rounded-xl overflow-hidden opacity-90 group-hover:opacity-100 transition-opacity'>
-                <div className='w-full h-full flex items-center justify-center'>
-                  <div className='text-white text-center'>
-                    <div className='text-4xl mb-2'>🚀</div>
-                    <p className='font-semibold'>Project Preview</p>
-                  </div>
-                </div>
+              {/* Project Image Carousel */}
+              <div className='mt-6 aspect-[3/4] rounded-xl overflow-hidden opacity-90 group-hover:opacity-100 transition-opacity bg-gray-900'>
+                <ImageCarousel images={project.images} title={project.title} />
               </div>
+
+              {/* Image count badge */}
+              {project.images.length > 1 && (
+                <div className='mt-2 text-sm text-gray-500 text-center'>
+                  {project.images.length} images available • Use arrows to
+                  navigate
+                </div>
+              )}
             </div>
           ))}
         </div>
@@ -191,7 +359,7 @@ const Projects: React.FC = () => {
           </div>
           <div className='mt-8 text-center'>
             <a
-              href='https://github.com'
+              href='https://github.com/aliijaz33'
               className='inline-flex items-center gap-2 px-6 py-3 bg-white text-gray-900 rounded-lg font-medium hover:bg-gray-100'
               target='_blank'
               rel='noopener noreferrer'

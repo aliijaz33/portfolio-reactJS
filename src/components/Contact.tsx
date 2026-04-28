@@ -35,20 +35,20 @@ const Contact: React.FC = () => {
     {
       icon: Mail,
       title: 'Email',
-      value: 'hello@example.com',
-      link: 'mailto:hello@example.com',
+      value: 'aliijaz6511@gmail.com',
+      link: 'mailto:aliijaz6511@gmail.com',
     },
     {
       icon: Phone,
       title: 'Phone',
-      value: '+1 (555) 123-4567',
-      link: 'tel:+15551234567',
+      value: '+92 340 3975893',
+      link: 'tel:+923403975893',
     },
     {
       icon: MapPin,
       title: 'Location',
-      value: 'San Francisco, CA',
-      link: 'https://maps.google.com',
+      value: 'Islamabad/Lahore, Pakistan',
+      link: 'https://maps.google.com/maps?q=Islamabad,Pakistan',
     },
   ];
 
@@ -60,8 +60,8 @@ const Contact: React.FC = () => {
             Get In <span className='text-primary-600'>Touch</span>
           </h2>
           <p className='text-gray-600 text-xl max-w-3xl mx-auto'>
-            Have a project in mind? Let's collaborate and create something
-            amazing together.
+            Interested in collaborating on innovative projects? Let's connect
+            and discuss how we can build something impactful together.
           </p>
         </div>
 
@@ -98,19 +98,38 @@ const Contact: React.FC = () => {
             <div>
               <h4 className='text-xl font-bold mb-4'>Connect on Social</h4>
               <div className='flex gap-4'>
-                {['GitHub', 'LinkedIn', 'Twitter', 'Instagram'].map(
-                  (platform) => (
-                    <a
-                      key={platform}
-                      href={`https://${platform.toLowerCase()}.com`}
-                      className='px-4 py-2 bg-white border border-gray-200 rounded-lg hover:bg-primary-50 hover:border-primary-300 transition-colors'
-                      target='_blank'
-                      rel='noopener noreferrer'
-                    >
-                      {platform}
-                    </a>
-                  ),
-                )}
+                <a
+                  href='https://github.com/aliijaz33'
+                  className='px-4 py-2 bg-white border border-gray-200 rounded-lg hover:bg-primary-50 hover:border-primary-300 transition-colors'
+                  target='_blank'
+                  rel='noopener noreferrer'
+                >
+                  GitHub
+                </a>
+                <a
+                  href='https://www.linkedin.com/in/ali-ijaz007'
+                  className='px-4 py-2 bg-white border border-gray-200 rounded-lg hover:bg-primary-50 hover:border-primary-300 transition-colors'
+                  target='_blank'
+                  rel='noopener noreferrer'
+                >
+                  LinkedIn
+                </a>
+                <a
+                  href='https://twitter.com'
+                  className='px-4 py-2 bg-white border border-gray-200 rounded-lg hover:bg-primary-50 hover:border-primary-300 transition-colors'
+                  target='_blank'
+                  rel='noopener noreferrer'
+                >
+                  Twitter
+                </a>
+                <a
+                  href='https://instagram.com'
+                  className='px-4 py-2 bg-white border border-gray-200 rounded-lg hover:bg-primary-50 hover:border-primary-300 transition-colors'
+                  target='_blank'
+                  rel='noopener noreferrer'
+                >
+                  Instagram
+                </a>
               </div>
             </div>
           </div>

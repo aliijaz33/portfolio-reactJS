@@ -4,35 +4,38 @@ import { User, MapPin, Briefcase, Award } from 'lucide-react';
 const About: React.FC = () => {
   const experiences = [
     {
-      year: '2023 - Present',
-      role: 'Senior Frontend Developer',
-      company: 'Tech Innovations Inc.',
-      description: 'Leading frontend architecture for enterprise applications.',
+      year: 'Dec 2025 – Feb 2026',
+      role: 'AI/ML Intern',
+      company: 'PakSoft Solutions',
+      description:
+        'Production Python + backend services (FastAPI), Databases, ML + CV + GenAI, OpenCV + YOLOv8 + pyttsx3, System design thinking.',
     },
     {
-      year: '2021 - 2023',
-      role: 'Full Stack Developer',
-      company: 'Digital Solutions LLC',
-      description: 'Built full-stack web applications with React and Node.js.',
+      year: 'Feb 2023 – Mar 2023',
+      role: 'React Native Intern',
+      company: 'Zimo Group UK',
+      description:
+        'Contributed to their project, Video Component + Animation, Firebase Push Notification.',
     },
     {
-      year: '2019 - 2021',
-      role: 'Web Developer',
-      company: 'Creative Agency',
-      description: 'Developed responsive websites and e-commerce platforms.',
+      year: 'Jul 2022 – Sep 2022',
+      role: 'React Native Intern',
+      company: 'BitSol Technologies',
+      description:
+        'Started with basics, Hooks + Components, Props + Data Handling + State Management, UI/UX/Design.',
     },
   ];
 
   const education = [
     {
-      degree: 'Bachelor of Science in Computer Science',
-      institution: 'University of Technology',
-      year: '2015 - 2019',
+      degree: 'Bachelor of Science in Software Engineering',
+      institution: 'Comsats University Islamabad',
+      year: '2020 – 2025',
     },
     {
-      degree: 'Frontend Development Certification',
-      institution: 'Meta Frontend Developer',
-      year: '2022',
+      degree: 'Understanding Machine Learning',
+      institution: 'DataCamp',
+      year: 'Sep 2025',
     },
   ];
 
@@ -44,8 +47,8 @@ const About: React.FC = () => {
             About <span className='text-primary-600'>Me</span>
           </h2>
           <p className='text-gray-600 text-xl max-w-3xl mx-auto'>
-            Passionate developer with expertise in modern web technologies,
-            dedicated to creating impactful digital experiences.
+            Passionate developer with expertise in modern Mobile & web
+            technologies, dedicated to creating impactful digital experiences.
           </p>
         </div>
 
@@ -58,49 +61,64 @@ const About: React.FC = () => {
                   <User className='w-10 h-10 text-primary-600' />
                 </div>
                 <div>
-                  <h3 className='text-2xl font-bold'>John Doe</h3>
-                  <p className='text-gray-600'>Full Stack Developer</p>
+                  <h3 className='text-2xl font-bold'>ALI IJAZ</h3>
+                  <p className='text-gray-600'>
+                    Software Engineer | React Native | React
+                  </p>
                 </div>
               </div>
 
               <div className='space-y-4'>
                 <div className='flex items-center gap-3'>
                   <MapPin className='w-5 h-5 text-gray-500' />
-                  <span>San Francisco, CA</span>
+                  <span>Islamabad/Lahore, Pakistan</span>
                 </div>
                 <div className='flex items-center gap-3'>
                   <Briefcase className='w-5 h-5 text-gray-500' />
-                  <span>5+ Years Experience</span>
+                  <span>3+ Years Experience</span>
                 </div>
                 <div className='flex items-center gap-3'>
                   <Award className='w-5 h-5 text-gray-500' />
-                  <span>15+ Certifications</span>
+                  <span>3 Certifications (DataCamp)</span>
                 </div>
               </div>
             </div>
 
-            {/* Resume Images */}
+            {/* Resume Download */}
             <div className='card'>
               <h3 className='text-xl font-bold mb-4'>My Resume</h3>
-              <div className='space-y-4'>
-                <div className='aspect-video bg-gray-100 rounded-lg overflow-hidden'>
-                  <img
-                    src='/resume/Screenshot 2026-04-26 at 2.55.45 PM.png'
-                    alt='Resume page 1'
-                    className='w-full h-full object-contain'
-                  />
+              <div className='space-y-6'>
+                <div className='text-center p-6 bg-primary-50 rounded-lg'>
+                  <div className='text-5xl mb-4'>📄</div>
+                  <h4 className='text-lg font-semibold mb-2'>
+                    Professional CV
+                  </h4>
+                  <p className='text-gray-600 text-sm'>
+                    Download my detailed resume with all experience, skills, and
+                    projects.
+                  </p>
                 </div>
-                <div className='aspect-video bg-gray-100 rounded-lg overflow-hidden'>
-                  <img
-                    src='/resume/Screenshot 2026-04-26 at 2.56.05 PM.png'
-                    alt='Resume page 2'
-                    className='w-full h-full object-contain'
-                  />
-                </div>
+                <a
+                  href='/resume/Ali-React_Native_CV.pdf'
+                  download='Ali_Ijaz_Resume.pdf'
+                  className='btn btn-primary w-full flex items-center justify-center gap-2'
+                >
+                  <svg
+                    className='w-5 h-5'
+                    fill='none'
+                    stroke='currentColor'
+                    viewBox='0 0 24 24'
+                  >
+                    <path
+                      strokeLinecap='round'
+                      strokeLinejoin='round'
+                      strokeWidth={2}
+                      d='M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z'
+                    />
+                  </svg>
+                  Download Resume (PDF)
+                </a>
               </div>
-              <button className='btn btn-primary w-full mt-6'>
-                Download Resume (PDF)
-              </button>
             </div>
           </div>
 
@@ -158,7 +176,7 @@ const About: React.FC = () => {
                 user‑centric designs. Technology should solve real problems
                 while providing delightful experiences. I'm constantly learning
                 and adapting to new tools and methodologies to stay at the
-                forefront of web development.
+                forefront of mobile & web development.
               </p>
             </div>
           </div>
