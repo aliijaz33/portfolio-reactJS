@@ -18,13 +18,13 @@ const Hero: React.FC = () => {
               <span className='inline-block px-4 py-2 bg-primary-100 text-primary-700 rounded-full font-medium'>
                 👋 Hello, I'm
               </span>
-              <h1 className='text-5xl md:text-7xl font-bold tracking-tight'>
+              <h1 className='text-5xl md:text-5xl font-bold tracking-tight'>
                 <span className='text-gray-900'>ALI IJAZ</span>
                 <br />
                 <span className='text-primary-600'>Software Engineer</span>
               </h1>
               <p className='text-xl text-gray-600 max-w-2xl'>
-                Quick learner, a self starter and a results-driven software
+                Quick learner, self starter and a results-driven software
                 engineer with experience in Mobile and web App development with
                 a strong background in various programming languages. Passionate
                 about AI and Robotics, always eager to learn new skills and
@@ -63,24 +63,19 @@ const Hero: React.FC = () => {
           </div>
 
           {/* Right Content - Profile & Skills */}
-          <div className='space-y-8'>
+          <div className='space-y-7'>
             {/* Profile Image */}
-            <div className='relative w-[300px] h-[380px] rounded-3xl'>
-              <div className='w-[300px] h-[380px] bg-gradient-to-br from-primary-500 to-purple-500 rounded-3xl overflow-hidden shadow-2xl flex items-center justify-center p-0'>
-                <div className='relative w-full h-full max-w-md'>
-                  <img
-                    src='/images/Profile_Photo.jpeg'
-                    alt='Ali Ijaz - Software Engineer'
-                    className='w-full h-full object-contain rounded-2xl'
-                  />
-                  <div className='absolute inset-0 bg-gradient-to-t from-black/20 to-transparent rounded-2xl'></div>
-                </div>
-                <div className='absolute inset-0 bg-gradient-to-br from-primary-500/30 to-purple-500/30'></div>
-              </div>
+            <div className='relative w-[300px] h-[380px] ml-40'>
+              <img
+                src='/images/Profile_Photo.jpeg'
+                alt='Ali Ijaz - Software Engineer'
+                className='w-full h-full object-contain rounded-3xl'
+              />
+              <div className='absolute inset-0 bg-gradient-to-br from-primary-300/30 to-purple-400/30 rounded-3xl'></div>
+
               {/* Decorative elements */}
               <div className='absolute -top-4 -right-4 w-24 h-24 bg-yellow-400 rounded-full opacity-20'></div>
               <div className='absolute -bottom-4 -right-4 w-24 h-24 bg-yellow-400 rounded-full opacity-20'></div>
-
               <div className='absolute -bottom-4 -left-4 w-32 h-32 bg-blue-400 rounded-full opacity-20'></div>
             </div>
 

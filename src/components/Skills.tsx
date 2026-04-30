@@ -25,7 +25,7 @@ const Skills: React.FC = () => {
       ],
     },
     {
-      title: 'Web Technologies',
+      title: 'Web Development',
       icon: Palette,
       color: 'text-orange-600',
       bgColor: 'bg-orange-50',
@@ -75,6 +75,7 @@ const Skills: React.FC = () => {
     'Google Maps',
     'Animation',
     'Video/Audio',
+    'REST APIs',
     'Node.js',
     'Express.js',
     'MongoDB',
@@ -85,7 +86,6 @@ const Skills: React.FC = () => {
     'OpenCV',
     'YOLOv8',
     'FastAPI',
-
     'Raspberry Pi',
   ];
 

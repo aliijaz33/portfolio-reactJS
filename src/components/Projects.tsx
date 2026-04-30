@@ -43,15 +43,7 @@ const ImageCarousel: React.FC<ImageCarouselProps> = ({ images, title }) => {
   };
 
   if (images.length === 0) {
-    return (
-      <div className='w-full h-full flex items-center justify-center bg-gradient-to-br from-gray-900 to-gray-800'>
-        <div className='text-white text-center p-8'>
-          <div className='text-5xl mb-4'>📱</div>
-          <p className='font-semibold text-lg'>Project Preview</p>
-          <p className='text-gray-400 text-sm mt-2'>No images available</p>
-        </div>
-      </div>
-    );
+    return null;
   }
 
   return (
@@ -146,7 +138,29 @@ const Projects: React.FC = () => {
       liveUrl: '#',
       githubUrl: 'https://github.com/aliijaz33/rubi-robot',
       featured: true,
-      images: ['/images/projects/robot-ai.jpg'], // placeholder
+      type: 'web',
+      video:
+        '/images/projects/rubi-robot/Screen Recording 2026-04-14 at 10.47.01 AM.mov',
+      images: [],
+    },
+    {
+      title: 'Portfolio Website',
+      description:
+        'A modern, responsive portfolio website built with React, TypeScript, and Tailwind CSS. Features include dark mode, interactive components, and smooth animations.',
+      tags: [
+        'React',
+        'TypeScript',
+        'Tailwind CSS',
+        'Vite',
+        'Responsive Design',
+      ],
+      githubStars: 8,
+      githubForks: 3,
+      liveUrl: '#',
+      githubUrl: 'https://github.com/aliijaz33/portfolio',
+      featured: false,
+      type: 'web',
+      images: ['/images/projects/portfolio/home.png'],
     },
     {
       title: 'AZ-Pay',
@@ -156,8 +170,10 @@ const Projects: React.FC = () => {
       githubStars: 28,
       githubForks: 12,
       liveUrl: '#',
-      githubUrl: 'https://github.com/aliijaz33/az-pay',
+      githubUrl:
+        'https://github.com/aliijaz33/AZ_Pay-P2P-currency-exchange-App-RN',
       featured: true,
+      type: 'mobile',
       images: [
         '/images/projects/az-pay/Dashboard.png',
         '/images/projects/az-pay/Deposit.png',
@@ -174,18 +190,6 @@ const Projects: React.FC = () => {
       ],
     },
     {
-      title: 'AZ-Ride Share',
-      description:
-        'A ride-sharing mobile application similar to Uber with real-time tracking, payment integration, and driver-passenger matching.',
-      tags: ['React Native', 'Google Maps', 'Firebase', 'Payment Gateway'],
-      githubStars: 22,
-      githubForks: 8,
-      liveUrl: '#',
-      githubUrl: 'https://github.com/aliijaz33/az-ride',
-      featured: false,
-      images: ['/images/projects/ride-share.jpg'], // placeholder
-    },
-    {
       title: 'Mini Trust Wallet',
       description:
         'Web3 Wallet for cryptocurrency with secure transactions, multi-chain support, and NFT display capabilities.',
@@ -195,6 +199,7 @@ const Projects: React.FC = () => {
       liveUrl: '#',
       githubUrl: 'https://github.com/aliijaz33/mini-trust-wallet',
       featured: false,
+      type: 'mobile',
       images: [
         '/images/projects/trust-wallet/Welcome.png',
         '/images/projects/trust-wallet/QRCode.png',
@@ -211,6 +216,19 @@ const Projects: React.FC = () => {
       ],
     },
     {
+      title: 'AZ-Ride Share',
+      description:
+        'A ride-sharing mobile application similar to Uber with real-time tracking, payment integration, and driver-passenger matching.',
+      tags: ['React Native', 'Google Maps', 'Firebase', 'Payment Gateway'],
+      githubStars: 22,
+      githubForks: 8,
+      liveUrl: '#',
+      githubUrl: 'https://github.com/aliijaz33/az-ride',
+      featured: false,
+      type: 'mobile',
+      images: ['/images/projects/trust-wallet/walletLoading.png'], // No images available
+    },
+    {
       title: 'GymIstan',
       description:
         'Fitness and gym management application with workout tracking, nutrition plans, and progress analytics.',
@@ -220,7 +238,8 @@ const Projects: React.FC = () => {
       liveUrl: '#',
       githubUrl: 'https://github.com/aliijaz33/gymistan',
       featured: false,
-      images: ['/images/projects/fitness-app.jpg'], // placeholder
+      type: 'mobile',
+      images: [], // No images available
     },
     {
       title: 'Virtual Stylist',
@@ -232,9 +251,16 @@ const Projects: React.FC = () => {
       liveUrl: '#',
       githubUrl: 'https://github.com/aliijaz33/virtual-stylist',
       featured: false,
-      images: ['/images/projects/fashion-ai.jpg'], // placeholder
+      type: 'mobile',
+      images: [], // No images available
     },
   ];
+
+  // Separate projects by type
+  const webProjects = projects.filter((project) => project.type === 'web');
+  const mobileProjects = projects.filter(
+    (project) => project.type === 'mobile',
+  );
 
   return (
     <section id='projects' className='section-padding bg-white'>
@@ -249,112 +275,238 @@ const Projects: React.FC = () => {
           </p>
         </div>
 
-        {/* Project Grid */}
-        <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12'>
-          {projects.map((project, index) => (
-            <div
-              key={index}
-              className={`card group hover:scale-[1.02] transition-transform ${
-                project.featured ? 'lg:col-span-2 lg:row-span-2' : ''
-              }`}
-            >
-              {/* Project Header */}
-              <div className='flex justify-between items-start mb-4'>
-                <div>
-                  <h3 className='text-2xl font-bold'>{project.title}</h3>
-                  <div className='flex items-center gap-4 mt-2'>
-                    <div className='flex items-center gap-1 text-gray-600'>
-                      <Star className='w-4 h-4' />
-                      <span className='text-sm'>{project.githubStars}</span>
-                    </div>
-                    <div className='flex items-center gap-1 text-gray-600'>
-                      <GitFork className='w-4 h-4' />
-                      <span className='text-sm'>{project.githubForks}</span>
-                    </div>
-                    <div className='flex items-center gap-1 text-gray-600'>
-                      <Eye className='w-4 h-4' />
-                      <span className='text-sm'>1.2k</span>
+        {/* Two-Column Project Layout */}
+        <div className='grid lg:grid-cols-8 gap-8 mb-12'>
+          {/* Left Column - Web Projects (5/8 width - reduced) */}
+          <div className='lg:col-span-5 space-y-8'>
+            {webProjects.map((project, index) => (
+              <div
+                key={index}
+                className={`card group hover:scale-[1.02] transition-transform ${
+                  project.featured ? 'border-2 border-primary-500' : ''
+                }`}
+              >
+                {/* Project Header */}
+                <div className='flex justify-between items-start mb-4'>
+                  <div>
+                    <h3 className='text-2xl font-bold'>{project.title}</h3>
+                    <div className='flex items-center gap-4 mt-2'>
+                      <div className='flex items-center gap-1 text-gray-600'>
+                        <Star className='w-4 h-4' />
+                        <span className='text-sm'>{project.githubStars}</span>
+                      </div>
+                      <div className='flex items-center gap-1 text-gray-600'>
+                        <GitFork className='w-4 h-4' />
+                        <span className='text-sm'>{project.githubForks}</span>
+                      </div>
+                      <div className='flex items-center gap-1 text-gray-600'>
+                        <Eye className='w-4 h-4' />
+                        <span className='text-sm'>1.2k</span>
+                      </div>
                     </div>
                   </div>
+                  {project.featured && (
+                    <span className='px-3 py-1 bg-primary-100 text-primary-700 rounded-full text-sm font-medium'>
+                      Featured
+                    </span>
+                  )}
                 </div>
-                {project.featured && (
-                  <span className='px-3 py-1 bg-primary-100 text-primary-700 rounded-full text-sm font-medium'>
-                    Featured
-                  </span>
-                )}
-              </div>
 
-              {/* Description */}
-              <p className='text-gray-600 mb-6'>{project.description}</p>
+                {/* Description */}
+                <p className='text-gray-600 mb-6'>{project.description}</p>
 
-              {/* Tags */}
-              <div className='flex flex-wrap gap-2 mb-6'>
-                {project.tags.map((tag) => (
-                  <span
-                    key={tag}
-                    className='px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm'
+                {/* Tags */}
+                <div className='flex flex-wrap gap-2 mb-6'>
+                  {project.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className='px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm'
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+
+                {/* Project Links - Only GitHub link */}
+                <div className='flex gap-4'>
+                  <a
+                    href={project.githubUrl}
+                    className='flex items-center gap-2 text-gray-700 hover:text-primary-600 font-medium'
+                    target='_blank'
+                    rel='noopener noreferrer'
                   >
-                    {tag}
-                  </span>
-                ))}
-              </div>
-
-              {/* Project Links */}
-              <div className='flex gap-4'>
-                <a
-                  href={project.githubUrl}
-                  className='flex items-center gap-2 text-gray-700 hover:text-primary-600 font-medium'
-                  target='_blank'
-                  rel='noopener noreferrer'
-                >
-                  <GitBranch className='w-5 h-5' />
-                  Code
-                </a>
-                <a
-                  href={project.liveUrl}
-                  className='flex items-center gap-2 text-gray-700 hover:text-primary-600 font-medium'
-                  target='_blank'
-                  rel='noopener noreferrer'
-                >
-                  <ExternalLink className='w-5 h-5' />
-                  Live Demo
-                </a>
-              </div>
-
-              {/* Project Image Carousel */}
-              <div className='mt-6 aspect-[3/4] rounded-xl overflow-hidden opacity-90 group-hover:opacity-100 transition-opacity bg-gray-900'>
-                <ImageCarousel images={project.images} title={project.title} />
-              </div>
-
-              {/* Image count badge */}
-              {project.images.length > 1 && (
-                <div className='mt-2 text-sm text-gray-500 text-center'>
-                  {project.images.length} images available • Use arrows to
-                  navigate
+                    <GitBranch className='w-5 h-5' />
+                    View on GitHub
+                  </a>
                 </div>
-              )}
+
+                {/* Project Media - Video for Rubi Robot, Images for others */}
+                <div className='mt-6 aspect-video rounded-xl overflow-hidden opacity-90 group-hover:opacity-100 transition-opacity bg-gray-900'>
+                  {project.video ? (
+                    <div className='relative w-full h-full'>
+                      <video
+                        className='w-full h-full object-cover'
+                        controls
+                        autoPlay
+                        muted
+                        loop
+                        playsInline
+                      >
+                        <source src={project.video} type='video/quicktime' />
+                        <source src={project.video} type='video/mp4' />
+                        Your browser does not support the video tag.
+                      </video>
+                      <div className='absolute bottom-4 right-4 bg-black/70 text-white px-3 py-1 rounded-lg text-sm'>
+                        Demo Video
+                      </div>
+                    </div>
+                  ) : project.images.length > 0 ? (
+                    <ImageCarousel
+                      images={project.images}
+                      title={project.title}
+                    />
+                  ) : (
+                    <div className='w-full h-full flex items-center justify-center text-gray-400'>
+                      No media available
+                    </div>
+                  )}
+                </div>
+
+                {/* Media info badge */}
+                {project.video ? (
+                  <div className='mt-2 text-sm text-gray-500 text-center'>
+                    Interactive demo video with sound • Click to play
+                  </div>
+                ) : project.images.length > 1 ? (
+                  <div className='mt-2 text-sm text-gray-500 text-center'>
+                    {project.images.length} images available • Use arrows to
+                    navigate
+                  </div>
+                ) : null}
+              </div>
+            ))}
+          </div>
+
+          {/* Right Column - Mobile Projects (3/8 width - increased) */}
+          <div className='lg:col-span-3'>
+            {/* Mobile Projects Title */}
+            <div className='mb-8'>
+              <h3 className='text-2xl font-bold text-gray-800'>
+                Mobile Projects
+              </h3>
+              <p className='text-gray-600 mt-2'>
+                Native and cross‑platform mobile applications built with React
+                Native
+              </p>
             </div>
-          ))}
+
+            <div className='space-y-8'>
+              {mobileProjects.map((project, index) => (
+                <div
+                  key={index}
+                  className={`card group hover:scale-[1.02] transition-transform ${
+                    project.featured ? 'border-2 border-primary-500' : ''
+                  }`}
+                >
+                  {/* Project Header */}
+                  <div className='flex justify-between items-start mb-4'>
+                    <div>
+                      <h3 className='text-xl font-bold'>{project.title}</h3>
+                      <div className='flex items-center gap-4 mt-2'>
+                        <div className='flex items-center gap-1 text-gray-600'>
+                          <Star className='w-4 h-4' />
+                          <span className='text-sm'>{project.githubStars}</span>
+                        </div>
+                        <div className='flex items-center gap-1 text-gray-600'>
+                          <GitFork className='w-4 h-4' />
+                          <span className='text-sm'>{project.githubForks}</span>
+                        </div>
+                      </div>
+                    </div>
+                    {project.featured && (
+                      <span className='px-3 py-1 bg-primary-100 text-primary-700 rounded-full text-sm font-medium'>
+                        Featured
+                      </span>
+                    )}
+                  </div>
+
+                  {/* Description */}
+                  <p className='text-gray-600 mb-4 text-sm'>
+                    {project.description}
+                  </p>
+
+                  {/* Tags */}
+                  <div className='flex flex-wrap gap-2 mb-4'>
+                    {project.tags.slice(0, 3).map((tag) => (
+                      <span
+                        key={tag}
+                        className='px-2 py-1 bg-gray-100 text-gray-700 rounded-full text-xs'
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                    {project.tags.length > 3 && (
+                      <span className='px-2 py-1 bg-gray-200 text-gray-600 rounded-full text-xs'>
+                        +{project.tags.length - 3}
+                      </span>
+                    )}
+                  </div>
+
+                  {/* Project Links - Only GitHub link */}
+                  <div className='flex gap-3 mb-4'>
+                    <a
+                      href={project.githubUrl}
+                      className='flex items-center gap-1 text-gray-700 hover:text-primary-600 font-medium text-sm'
+                      target='_blank'
+                      rel='noopener noreferrer'
+                    >
+                      <GitBranch className='w-4 h-4' />
+                      View on GitHub
+                    </a>
+                  </div>
+
+                  {/* Project Image Carousel - Only show if images exist */}
+                  {project.images.length > 0 && (
+                    <>
+                      <div className='mt-4 aspect-[3/4] rounded-xl overflow-hidden opacity-90 group-hover:opacity-100 transition-opacity bg-gray-900'>
+                        <ImageCarousel
+                          images={project.images}
+                          title={project.title}
+                        />
+                      </div>
+
+                      {/* Image count badge */}
+                      {project.images.length > 1 && (
+                        <div className='mt-2 text-xs text-gray-500 text-center'>
+                          {project.images.length} screenshots • Swipe to view
+                        </div>
+                      )}
+                    </>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
 
         {/* GitHub Stats */}
         <div className='card bg-gradient-to-r from-gray-900 to-gray-800 text-white'>
           <div className='grid md:grid-cols-4 gap-8'>
             <div className='text-center'>
-              <div className='text-4xl font-bold'>150+</div>
-              <div className='text-gray-300'>GitHub Repositories</div>
+              <div className='text-4xl font-bold'>31</div>
+              <div className='text-gray-300'>Contributions (2026)</div>
             </div>
             <div className='text-center'>
-              <div className='text-4xl font-bold'>2.5k+</div>
+              <div className='text-4xl font-bold'>28</div>
+              <div className='text-gray-300'>Public Repositories</div>
+            </div>
+            <div className='text-center'>
+              <div className='text-4xl font-bold'>1.2k+</div>
               <div className='text-gray-300'>Total Commits</div>
             </div>
             <div className='text-center'>
-              <div className='text-4xl font-bold'>89</div>
-              <div className='text-gray-300'>Contributions (30 days)</div>
-            </div>
-            <div className='text-center'>
-              <div className='text-4xl font-bold'>15</div>
-              <div className='text-gray-300'>Open Source Projects</div>
+              <div className='text-4xl font-bold'>85</div>
+              <div className='text-gray-300'>Stars Received</div>
             </div>
           </div>
           <div className='mt-8 text-center'>
