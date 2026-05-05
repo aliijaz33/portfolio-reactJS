@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Heart, Coffee, Copyright } from 'lucide-react';
 
 const Footer: React.FC = () => {
@@ -8,28 +9,28 @@ const Footer: React.FC = () => {
     {
       title: 'Navigation',
       links: [
-        { label: 'Home', href: '#home' },
-        { label: 'About', href: '#about' },
-        { label: 'Skills', href: '#skills' },
-        { label: 'Projects', href: '#projects' },
-        { label: 'Contact', href: '#contact' },
+        { label: 'Home', path: '/' },
+        { label: 'About', path: '/about' },
+        { label: 'Skills', path: '/' },
+        { label: 'Projects', path: '/projects' },
+        { label: 'Contact', path: '/contact' },
       ],
     },
     {
       title: 'Resources',
       links: [
-        { label: 'Resume', href: '#resume' },
-        { label: 'GitHub', href: 'https://github.com/aliijaz33' },
-        { label: 'Blog', href: '#blog' },
-        { label: 'Case Studies', href: '#case-studies' },
+        { label: 'Resume', path: '/resume/Ali-React_Native_CV.pdf' },
+        { label: 'GitHub', path: 'https://github.com/aliijaz33' },
+        { label: 'Blog', path: '#blog' },
+        { label: 'Case Studies', path: '#case-studies' },
       ],
     },
     {
       title: 'Legal',
       links: [
-        { label: 'Privacy Policy', href: '#privacy' },
-        { label: 'Terms of Service', href: '#terms' },
-        { label: 'Cookie Policy', href: '#cookies' },
+        { label: 'Privacy Policy', path: '/privacy' },
+        { label: 'Terms of Service', path: '/terms' },
+        { label: 'Cookie Policy', path: '/cookies' },
       ],
     },
   ];
@@ -136,12 +137,23 @@ const Footer: React.FC = () => {
               <ul className='space-y-3'>
                 {column.links.map((link) => (
                   <li key={link.label}>
-                    <a
-                      href={link.href}
-                      className='text-gray-400 hover:text-white transition-colors'
-                    >
-                      {link.label}
-                    </a>
+                    {link.path.startsWith('http') ? (
+                      <a
+                        href={link.path}
+                        className='text-gray-400 hover:text-white transition-colors'
+                        target='_blank'
+                        rel='noopener noreferrer'
+                      >
+                        {link.label}
+                      </a>
+                    ) : (
+                      <Link
+                        to={link.path}
+                        className='text-gray-400 hover:text-white transition-colors'
+                      >
+                        {link.label}
+                      </Link>
+                    )}
                   </li>
                 ))}
               </ul>
@@ -159,17 +171,17 @@ const Footer: React.FC = () => {
             <span>{currentYear} Portfolio. All rights reserved.</span>
           </div>
 
-          <div className='flex items-center gap-6'>
-            <a href='/privacy' className='text-gray-400 hover:text-white'>
-              Privacy Policy
-            </a>
-            <a href='/terms' className='text-gray-400 hover:text-white'>
-              Terms of Service
-            </a>
-            <a href='/sitemap' className='text-gray-400 hover:text-white'>
-              Sitemap
-            </a>
-          </div>
+         <div className='flex items-center gap-6'>
+             <Link to='/privacy' className='text-gray-400 hover:text-white'>
+               Privacy Policy
+             </Link>
+             <Link to='/terms' className='text-gray-400 hover:text-white'>
+               Terms of Service
+             </Link>
+             <Link to='/sitemap' className='text-gray-400 hover:text-white'>
+               Sitemap
+             </Link>
+           </div>
 
           <div className='flex items-center gap-2 text-gray-400'>
             <span>Made with</span>
@@ -180,15 +192,15 @@ const Footer: React.FC = () => {
           </div>
         </div>
 
-        {/* Back to Top */}
-        <div className='text-center mt-12'>
-          <a
-            href='/'
-            className='inline-flex items-center gap-2 px-6 py-3 bg-gray-800 hover:bg-gray-700 rounded-full transition-colors'
-          >
-            ↑ Back to Top
-          </a>
-        </div>
+         {/* Back to Top */}
+         <div className='text-center mt-12'>
+           <Link
+             to='/'
+             className='inline-flex items-center gap-2 px-6 py-3 bg-gray-800 hover:bg-gray-700 rounded-full transition-colors'
+           >
+             ↑ Back to Top
+           </Link>
+         </div>
       </div>
     </footer>
   );

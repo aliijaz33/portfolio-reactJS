@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import {
-  ExternalLink,
   Star,
   GitFork,
   Eye,
@@ -144,6 +143,33 @@ const Projects: React.FC = () => {
       images: [],
     },
     {
+      title: 'Thumbnail Genius',
+      description:
+        'An AI-powered thumbnail generator that creates stunning YouTube thumbnails using advanced models. Features include multiple AI model selection, light/dark mode, and customizable templates for different content types.',
+      tags: [
+        'React',
+        'Material-UI',
+        'AI',
+        'Image Generation',
+        'Responsive Design',
+      ],
+      githubStars: 5,
+      githubForks: 2,
+      liveUrl: '#',
+      githubUrl: 'https://github.com/aliijaz33/thumbnail-genius',
+      featured: true,
+      type: 'web',
+      images: [
+        '/images/projects/thumbnail-genius/modelSelection1.png',
+        '/images/projects/thumbnail-genius/lightDarkMode2.png',
+        '/images/projects/thumbnail-genius/thumbnail3.png',
+        '/images/projects/thumbnail-genius/thumbnail4.png',
+        '/images/projects/thumbnail-genius/meme5.png',
+        '/images/projects/thumbnail-genius/meme6.png',
+        '/images/projects/thumbnail-genius/simmple7.png',
+      ],
+    },
+    {
       title: 'Portfolio Website',
       description:
         'A modern, responsive portfolio website built with React, TypeScript, and Tailwind CSS. Features include dark mode, interactive components, and smooth animations.',
@@ -162,6 +188,7 @@ const Projects: React.FC = () => {
       type: 'web',
       images: ['/images/projects/portfolio/home.png'],
     },
+
     {
       title: 'AZ-Pay',
       description:

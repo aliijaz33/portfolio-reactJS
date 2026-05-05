@@ -32,10 +32,23 @@ const About: React.FC = () => {
       institution: 'Comsats University Islamabad',
       year: '2020 – 2025',
     },
+  ];
+
+  const certifications = [
     {
       degree: 'Understanding Machine Learning',
       institution: 'DataCamp',
       year: 'Sep 2025',
+    },
+    {
+      degree: 'Understanding Artificial Intelligence',
+      institution: 'DataCamp',
+      year: 'Aug 2025',
+    },
+    {
+      degree: 'Introduction to Python',
+      institution: 'DataCamp',
+      year: 'Aug 2025',
     },
   ];
 
@@ -75,7 +88,7 @@ const About: React.FC = () => {
                 </div>
                 <div className='flex items-center gap-3'>
                   <Briefcase className='w-5 h-5 text-gray-500' />
-                  <span>3+ Years Experience</span>
+                  <span>1+ Years Experience</span>
                 </div>
                 <div className='flex items-center gap-3'>
                   <Award className='w-5 h-5 text-gray-500' />
@@ -155,7 +168,7 @@ const About: React.FC = () => {
             <div className='card'>
               <h3 className='text-2xl font-bold mb-8 flex items-center gap-2'>
                 <Award className='w-6 h-6' />
-                Education & Certifications
+                Education
               </h3>
               <div className='grid md:grid-cols-2 gap-6'>
                 {education.map((edu, index) => (
@@ -163,6 +176,23 @@ const About: React.FC = () => {
                     <h4 className='font-bold text-lg'>{edu.degree}</h4>
                     <p className='text-primary-600'>{edu.institution}</p>
                     <p className='text-gray-500 text-sm mt-2'>{edu.year}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Certifications */}
+            <div className='card'>
+              <h3 className='text-2xl font-bold mb-8 flex items-center gap-2'>
+                <Award className='w-6 h-6' />
+                Certifications
+              </h3>
+              <div className='grid md:grid-cols-2 gap-6'>
+                {certifications.map((cert, index) => (
+                  <div key={index} className='p-4 bg-gray-50 rounded-xl'>
+                    <h4 className='font-bold text-lg'>{cert.degree}</h4>
+                    <p className='text-primary-600'>{cert.institution}</p>
+                    <p className='text-gray-500 text-sm mt-2'>{cert.year}</p>
                   </div>
                 ))}
               </div>

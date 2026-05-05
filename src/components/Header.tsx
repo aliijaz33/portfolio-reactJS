@@ -1,15 +1,16 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Menu, X, Mail } from 'lucide-react';
 
 const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const navItems = [
-    { label: 'Home', href: '#home' },
-    { label: 'About', href: '#about' },
-    { label: 'Skills', href: '#skills' },
-    { label: 'Projects', href: '#projects' },
-    { label: 'Contact', href: '#contact' },
+    { label: 'Home', path: '/' },
+    { label: 'Skills', path: '/#skills' },
+    { label: 'Projects', path: '/projects' },
+    { label: 'About', path: '/about' },
+    { label: 'Contact', path: '/contact' },
   ];
 
   const socialLinks = [
@@ -67,13 +68,13 @@ const Header: React.FC = () => {
           {/* Desktop Navigation */}
           <nav className='hidden md:flex items-center space-x-8'>
             {navItems.map((item) => (
-              <a
+              <Link
                 key={item.label}
-                href={item.href}
+                to={item.path}
                 className='text-gray-700 hover:text-primary-600 font-medium transition-colors'
               >
                 {item.label}
-              </a>
+              </Link>
             ))}
           </nav>
 
@@ -114,14 +115,14 @@ const Header: React.FC = () => {
           <div className='md:hidden mt-6 pb-4 border-t pt-4'>
             <div className='flex flex-col space-y-4'>
               {navItems.map((item) => (
-                <a
+                <Link
                   key={item.label}
-                  href={item.href}
+                  to={item.path}
                   className='text-gray-700 hover:text-primary-600 py-2 font-medium'
                   onClick={() => setIsMenuOpen(false)}
                 >
                   {item.label}
-                </a>
+                </Link>
               ))}
               <div className='flex space-x-4 pt-4'>
                 {socialLinks.map((link) => (

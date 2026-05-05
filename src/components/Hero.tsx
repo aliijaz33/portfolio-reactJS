@@ -34,13 +34,13 @@ const Hero: React.FC = () => {
 
             <div className='flex flex-wrap gap-4'>
               <a
-                href='#projects'
+                href='/projects'
                 className='btn btn-primary flex items-center gap-2'
               >
                 View My Work
                 <ArrowRight size={20} />
               </a>
-              <a href='#contact' className='btn btn-secondary'>
+              <a href='/contact' className='btn btn-secondary'>
                 Contact Me
               </a>
             </div>
@@ -52,7 +52,7 @@ const Hero: React.FC = () => {
                 <div className='text-gray-600'>Projects</div>
               </div>
               <div className='text-center'>
-                <div className='text-3xl font-bold text-primary-700'>3+</div>
+                <div className='text-3xl font-bold text-primary-700'>1+</div>
                 <div className='text-gray-600'>Years Experience</div>
               </div>
               <div className='text-center'>
