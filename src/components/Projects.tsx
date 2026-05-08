@@ -243,19 +243,6 @@ const Projects: React.FC = () => {
       ],
     },
     {
-      title: 'AZ-Ride Share',
-      description:
-        'A ride-sharing mobile application similar to Uber with real-time tracking, payment integration, and driver-passenger matching.',
-      tags: ['React Native', 'Google Maps', 'Firebase', 'Payment Gateway'],
-      githubStars: 22,
-      githubForks: 8,
-      liveUrl: '#',
-      githubUrl: 'https://github.com/aliijaz33/az-ride',
-      featured: false,
-      type: 'mobile',
-      images: ['/images/projects/trust-wallet/walletLoading.png'], // No images available
-    },
-    {
       title: 'GymIstan',
       description:
         'Fitness and gym management application with workout tracking, nutrition plans, and progress analytics.',
@@ -266,7 +253,44 @@ const Projects: React.FC = () => {
       githubUrl: 'https://github.com/aliijaz33/gymistan',
       featured: false,
       type: 'mobile',
-      images: [], // No images available
+      images: [
+        '/images/projects/gymistan/login.png',
+        '/images/projects/gymistan/dashboard.png',
+        '/images/projects/gymistan/excersises.png',
+        '/images/projects/gymistan/specificExcersises.png',
+        '/images/projects/gymistan/excersiseDetails.png',
+        '/images/projects/gymistan/excersiseDetails2.png',
+        '/images/projects/gymistan/play.png',
+        '/images/projects/gymistan/settings.png',
+        '/images/projects/gymistan/settings2.png',
+      ],
+    },
+    {
+      title: 'AZ-Ride Share',
+      description:
+        'A ride-sharing mobile application similar to Uber with real-time tracking, payment integration, and driver-passenger matching.',
+      tags: ['React Native', 'Google Maps', 'Firebase', 'Payment Gateway'],
+      githubStars: 22,
+      githubForks: 8,
+      liveUrl: '#',
+      githubUrl: 'https://github.com/aliijaz33/az-ride',
+      featured: false,
+      type: 'mobile',
+      images: [
+        '/images/projects/az-rideshare/splash.png',
+        '/images/projects/az-rideshare/register.png',
+        '/images/projects/az-rideshare/register2.png',
+        '/images/projects/az-rideshare/register3.png',
+        '/images/projects/az-rideshare/register4.png',
+        '/images/projects/az-rideshare/register5.png',
+        '/images/projects/az-rideshare/register6.png',
+        '/images/projects/az-rideshare/map.png',
+        '/images/projects/az-rideshare/inCity.png',
+        '/images/projects/az-rideshare/inCity2.png',
+        '/images/projects/az-rideshare/citytocity.png',
+        '/images/projects/az-rideshare/profile.png',
+        '/images/projects/az-rideshare/shareRide.png',
+      ],
     },
     {
       title: 'Virtual Stylist',
